@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiseWealth - Your Investment Consultant</title>
+    <link rel="icon" href="https://i.ibb.co/6P26bVn/Wise-Wealth.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Importing Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for internal links */
+        }
+
+        /* Header and Navigation */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .header .logo img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .header .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header .auth-buttons .btn {
+            padding: 10px 20px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .header .auth-buttons .btn.login {
+            background-color: #ffffff;
+            color: #2c3e50;
+            border-color: #2c3e50;
+        }
+
+        .header .auth-buttons .btn.create-account {
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+
+        .header .auth-buttons .btn.rewards {
+            background-color: #ffc107;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero .quote {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .hero .btn {
+            padding: 15px 30px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #1a242f;
+        }
+
+        /* Feature Cards Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px;
+            background-color: #f4f7fc;
+        }
+
+        .feature-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 0;
+            color: #34495e;
+        }
+
+        .feature-card h3::before {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .feature-card.invest h3::before { content: '📊'; }
+        .feature-card.risk h3::before { content: '🛡️'; }
+        .feature-card.advice h3::before { content: '💡'; }
+        .feature-card.billing h3::before { content: '💳'; }
+        .feature-card.updates h3::before { content: '📈'; }
+        .feature-card.more h3::before { content: '🔧'; }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .feature-card .min-investment {
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* Investment Options Section */
+        .investment-options-container {
+            padding: 50px;
+            background-color: #f4f7fc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .investment-options {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .accordion-header {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            color: #34495e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .accordion-header:hover {
+            color: #2980b9;
+        }
+
+        .accordion-header::before {
+            content: '📊';
+            margin-right: 10px;
+        }
+
+        /* Spacing fixes */
+        .accordion-header {
+            margin-bottom: 10px;
+        }
+        .accordion-content {
+            margin-top: 0;
+            padding-top: 0;
+            display: none;
+        }
+        .accordion-content.active {
+            display: block;
+        }
+
+        .stock-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stock-card {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stock-card .stock-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .stock-card .btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .stock-card .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .risk-tag {
+            background-color: #c0392b;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 3px 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 50px;
+            background-color: #f4f7fc;
+        }
+
+        .faq-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background-color: #ecf0f1;
+        }
+
+        /* Sub-Sections for other features */
+        .sub-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #ffffff;
+            border-top: 1px solid #e0e0e0;
+        }
+        .sub-section .btn {
+            padding: 15px 30px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .sub-section .btn:hover {
+            background-color: #1a242f;
+        }
+
+        /* Personalized Advice Section */
+        .advice-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #f4f7fc;
+        }
+
+        .advice-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .portfolio-advice-input {
+            margin-top: 30px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-advice-input h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .portfolio-advice-input textarea {
+            width: 80%;
+            height: 100px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+        }
+
+        .portfolio-advice-input .btn {
+            margin-top: 15px;
+            padding: 15px 30px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .portfolio-advice-input .btn:hover {
+            background-color: #1a242f;
+        }
+
+        /* Advice Output Section */
+        .advice-output {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e8f5e9; /* Light green background for positive feedback */
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            text-align: left;
+            color: #388e3c;
+            font-weight: 500;
+        }
+
+        .advice-output h4 {
+            margin-top: 0;
+            color: #1b5e20;
+        }
+
+        /* --- Billing Modal Styles --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-header h3::before {
+            font-size: 24px;
+        }
+
+        .modal-header.billing-header h3::before { content: '💳'; }
+        .modal-header.risk-header h3::before { content: '🛡️'; }
+        .modal-header.updates-header h3::before { content: '📈'; }
+        .modal-header.login-header h3::before { content: '🔑'; }
+        .modal-header.create-header h3::before { content: '📝'; }
+        .modal-header.rewards-header h3::before { content: '🏆'; }
+
+
+        .modal-header p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        .modal-body {
+            padding-top: 20px;
+        }
+
+        .payment-selection select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .payment-history {
+            margin-top: 30px;
+        }
+
+        .payment-history h4, .auto-debit-setup h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .payment-table th, .payment-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .payment-table th {
+            background-color: #ecf0f1;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .payment-table tbody tr:hover {
+            background-color: #f4f7fc;
+        }
+
+        .status-success {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .auto-debit-setup {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        /* Styling for new modals */
+        .risk-questionnaire select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .risk-result h4 {
+            margin-top: 20px;
+        }
+
+        .risk-level {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2980b9;
+        }
+
+        .risk-description {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .live-updates-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .live-updates-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+        }
+
+        .update-label {
+            font-weight: 600;
+            background-color: #34495e;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .live-data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .live-data-row span {
+            font-weight: 600;
+        }
+
+        .live-data-row .price {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        .change.positive {
+            color: #27ae60;
+        }
+
+        .change.negative {
+            color: #c0392b;
+        }
+        
+        /* Form styles for Login and Create Account modals */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-actions .btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-actions .btn:hover {
+            background-color: #1a242f;
+        }
+
+        /* Rewards Modal Styles */
+        .rewards-container {
+            text-align: center;
+        }
+        .rewards-tier {
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            color: white;
+            position: relative;
+        }
+        .rewards-tier h4 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .rewards-tier p {
+            font-size: 16px;
+        }
+        .rewards-tier .reinvest-btn {
+            background: #fff;
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 15px;
+        }
+        .rewards-tier .reinvest-btn:hover {
+            transform: scale(1.05);
+        }
+        .rewards-tier .status-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .bronze { background-color: #CD7F32; }
+        .silver { background-color: #C0C0C0; }
+        .gold { background-color: #FFD700; }
+        .your-tier {
+            border: 3px solid #2c3e50;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="https://i.ibb.co/6P26bVn/Wise-Wealth.png" alt="WiseWealth Logo">
+            WiseWealth
+        </div>
+        <div class="auth-buttons">
+            <button class="btn login-btn">Login</button>
+            <button class="btn create-account-btn">Create Account</button>
+            <button class="btn rewards-btn">T Rewards</button>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>Welcome to WiseWealth</h1>
+            <p class="quote">"Your journey to financial freedom starts here."</p>
+            <a href="#features" class="btn">Get Started</a>
+        </section>
+        
+        <section class="features" id="features">
+            <a href="#invest" class="feature-card invest">
+                <h3>Invest</h3>
+                <p>Help users decide where to put their money with smart investment opportunities.</p>
+                <div class="min-investment">Minimum investment: ₹1,000</div>
+            </a>
+            <a href="#risk-analysis" class="feature-card risk">
+                <h3>Analyze Risk</h3>
+                <p>Understand risk levels (Low / Medium / High) and decide based on your risk appetite.</p>
+            </a>
+            <a href="#advice-section" class="feature-card advice">
+                <h3>Advice</h3>
+                <p>Get expert financial advice with personalized tips and strategies to grow your wealth.</p>
+            </a>
+            <a href="#billing" class="feature-card billing">
+                <h3>Billing Integration</h3>
+                <p>Manage your payment methods, track billing history, and set up auto-debits for investments.</p>
+            </a>
+            <a href="#live-updates" class="feature-card updates">
+                <h3>Live Updates</h3>
+                <p>Get real-time updates about stock markets, crypto, commodities, and WiseWealth notifications.</p>
+            </a>
+            <a href="#" class="feature-card more">
+                <h3>More</h3>
+                <p>Additional tools and features to enhance your investment experience.</p>
+            </a>
+        </section>
+
+        <section class="investment-options-container" id="invest">
+            <h2 class="section-title">Smart Investment Opportunities</h2>
+            <div class="investment-options">
+                <p>Choose from diversified investment options to grow your wealth. Minimum investment: ₹1,000.</p>
+                <br>
+                <h3 class="accordion-header">Stocks</h3>
+                <div class="accordion-content active">
+                    <div class="stock-list" id="stock-list-container">
+                        <!-- Stock cards will be dynamically inserted here by JavaScript -->
+                    </div>
+                </div>
+                <br>
+                <h3 class="accordion-header">Mutual Funds</h3>
+                <div class="accordion-content">
+                    <p>Coming soon...</p>
+                </div>
+                <h3 class="accordion-header">Gold / Digital Gold</h3>
+                <div class="accordion-content">
+                    <p>Coming soon...</p>
+                </div>
+                <h3 class="accordion-header">Cryptocurrency <span class="risk-tag">High Risk</span></h3>
+                <div class="accordion-content">
+                    <p>Coming soon...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sub-section" id="risk-analysis">
+            <h2 class="section-title">Risk Analysis</h2>
+            <p>Our tools help you understand the risk associated with each investment. Fill out our risk profile questionnaire to get a personalized recommendation.</p>
+            <button class="btn">Start Risk Analysis</button>
+        </section>
+
+        <section class="faq-section" id="advice-section">
+            <h2 class="section-title">Get Personalized Advice</h2>
+            <div class="portfolio-advice-input">
+                <h4>Enter your portfolio details for personalized advice:</h4>
+                <textarea placeholder="e.g., I have invested ₹50,000 in Reliance Industries and ₹20,000 in a balanced mutual fund."></textarea>
+                <button class="btn" id="get-advice-btn">Get Advice</button>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    How much should I invest monthly? 
+                    <span>+</span>
+                </div>
+                <div class="faq-item">
+                    When is the best time to start investing?
+                    <span>+</span>
+                </div>
+                <div class="faq-item">
+                    How do I diversify my portfolio?
+                    <span>+</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="sub-section" id="billing">
+            <h2 class="section-title">Billing & Payments</h2>
+            <p>Securely manage your billing information, view past invoices, and set up recurring investments with ease.</p>
+            <button class="btn">Manage Billing</button>
+        </section>
+
+        <section class="sub-section" id="live-updates">
+            <h2 class="section-title">Live Market Updates</h2>
+            <p>Stay informed with real-time stock prices, market news, and crypto updates from around the globe.</p>
+            <button class="btn">View Live Feed</button>
+        </section>
+
+    </main>
+    
+    <!-- Billing Modal (Hidden by default) -->
+    <div id="billing-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header billing-header">
+                <h3>Billing & Payments</h3>
+                <p>Manage your payment methods and track transactions securely.</p>
+            </div>
+            <div class="modal-body">
+                <div class="payment-selection">
+                    <label for="payment-method">Select Payment Method:</label>
+                    <select id="payment-method">
+                        <option value="">Choose payment method</option>
+                        <option value="upi">UPI</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                        <option value="net-banking">Net Banking</option>
+                        <option value="wallets">Wallets</option>
+                    </select>
+                </div>
+
+                <div class="payment-history">
+                    <h4>Previous Payments</h4>
+                    <table class="payment-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Method</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payment-table-body">
+                            <!-- Payment history rows will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="auto-debit-setup">
+                    <h4>Auto-Debit Setup</h4>
+                    <p>Set up recurring payments to automate your investments.</p>
+                    <button class="btn">Setup Auto-Debit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Analysis Modal -->
+    <div id="risk-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header risk-header">
+                <h3>Risk Analysis</h3>
+                <p>Understand your risk appetite with our personalized questionnaire.</p>
+            </div>
+            <div class="modal-body">
+                <div class="risk-questionnaire">
+                    <h4>What is your investment goal?</h4>
+                    <select>
+                        <option>Long-term growth (5+ years)</option>
+                        <option>Short-term gains (1-3 years)</option>
+                        <option>Capital preservation</option>
+                    </select>
+                </div>
+                <div class="risk-questionnaire">
+                    <h4>How would you react to a sudden market downturn?</h4>
+                    <select>
+                        <option>Stay calm and hold investments</option>
+                        <option>Sell some investments to reduce losses</option>
+                        <option>Panic and sell all investments</option>
+                    </select>
+                </div>
+                <div class="risk-result">
+                    <h4>Based on your answers, your risk profile is:</h4>
+                    <p class="risk-level">Moderate</p>
+                    <p class="risk-description">You are comfortable with some market volatility to achieve better returns over time. We recommend a balanced portfolio of stocks and mutual funds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Updates Modal -->
+    <div id="updates-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header updates-header">
+                <h3>Live Market Updates</h3>
+                <p>Stay informed with real-time data from global markets.</p>
+            </div>
+            <div class="modal-body">
+                <div class="live-updates-content">
+                    <h4>Recent Market News:</h4>
+                    <ul>
+                        <li><span class="update-label">Breaking:</span> Sensex up 1.5% as tech stocks rally.</li>
+                        <li><span class="update-label">Crypto:</span> Bitcoin surpasses $70,000 mark.</li>
+                        <li><span class="update-label">Commodities:</span> Gold prices see a slight dip.</li>
+                    </ul>
+                    <hr>
+                    <h4>Live Stock Data:</h4>
+                    <div class="live-data-row">
+                        <span>RELIANCE</span>
+                        <span class="price">₹2,800.50</span>
+                        <span class="change positive">+1.25%</span>
+                    </div>
+                    <div class="live-data-row">
+                        <span>TCS</span>
+                        <span class="price">₹3,450.20</span>
+                        <span class="change negative">-0.50%</span>
+                    </div>
+                    <div class="live-data-row">
+                        <span>INFY</span>
+                        <span class="price">₹1,500.85</span>
+                        <span class="change positive">+2.10%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header login-header">
+                <h3>Login to WiseWealth</h3>
+                <p>Access your investment dashboard.</p>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email or Username</label>
+                        <input type="text" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Account Modal -->
+    <div id="create-account-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header create-header">
+                <h3>Create a WiseWealth Account</h3>
+                <p>Start your financial journey today.</p>
+            </div>
+            <div class="modal-body">
+                <form id="create-account-form">
+                    <div class="form-group">
+                        <label for="create-name">Full Name</label>
+                        <input type="text" id="create-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-email">Email Address</label>
+                        <input type="email" id="create-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="create-password">Password</label>
+                        <input type="password" id="create-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewards Modal -->
+    <div id="rewards-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header rewards-header">
+                <h3>T Rewards</h3>
+                <p>Earn rewards based on your portfolio's performance. You can reinvest them to grow your wealth even faster.</p>
+            </div>
+            <div class="modal-body rewards-container">
+                <p>Your current profit: <strong id="current-profit">0%</strong></p>
+                <div id="user-tier-message" style="margin-bottom: 20px;"></div>
+
+                <div class="rewards-tier bronze" id="bronze-tier">
+                    <div class="status-tag">Tier 1</div>
+                    <h4>Bronze Tier</h4>
+                    <p>Unlock this tier with a **15%** profit.</p>
+                    <button class="btn reinvest-btn">Reinvest Rewards</button>
+                </div>
+
+                <div class="rewards-tier silver" id="silver-tier">
+                    <div class="status-tag">Tier 2</div>
+                    <h4>Silver Tier</h4>
+                    <p>Unlock this tier with a **25%** profit.</p>
+                    <button class="btn reinvest-btn">Reinvest Rewards</button>
+                </div>
+
+                <div class="rewards-tier gold" id="gold-tier">
+                    <div class="status-tag">Tier 3</div>
+                    <h4>Gold Tier</h4>
+                    <p>Unlock this tier with a **40%** profit.</p>
+                    <button class="btn reinvest-btn">Reinvest Rewards</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script will handle the interactive parts of the website
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- "Get Started" Button Functionality ---
+            const getStartedBtn = document.querySelector('.hero .btn');
+            const featuresSection = document.getElementById('features');
+
+            if (getStartedBtn && featuresSection) {
+                getStartedBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    featuresSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // --- Accordion Functionality for Investment Options ---
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    
+                    // Toggle the active class on the content to show/hide it
+                    content.classList.toggle('active');
+                });
+            });
+
+            // --- "Get Advice" button functionality ---
+            const getAdviceBtn = document.getElementById('get-advice-btn');
+            const portfolioInput = document.querySelector('.portfolio-advice-input textarea');
+            
+            // Create an element to display the advice and add it to the page
+            const adviceOutput = document.createElement('div');
+            adviceOutput.className = 'advice-output';
+            if (portfolioInput) {
+                portfolioInput.parentNode.insertBefore(adviceOutput, getAdviceBtn.nextSibling);
+            }
+
+            if (getAdviceBtn) {
+                getAdviceBtn.addEventListener('click', async () => {
+                    const portfolioData = portfolioInput.value;
+
+                    if (!portfolioData) {
+                        adviceOutput.textContent = 'Please enter your portfolio details to get advice.';
+                        return;
+                    }
+
+                    adviceOutput.textContent = 'Analyzing your portfolio...';
+                    
+                    try {
+                        // This is a mock API call. In a real application, you would connect to a backend.
+                        const mockResponse = {
+                            advice: "Based on your current portfolio, your diversification is a bit low. Consider adding a few more large-cap stocks to balance your risk. Your long-term holdings in Reliance Industries are a good base, but adding sectors like IT or healthcare could enhance stability. Revisit your risk profile every 6-12 months."
+                        };
+                        
+                        setTimeout(() => {
+                            adviceOutput.innerHTML = `<h4>Here is your personalized advice:</h4><p>${mockResponse.advice}</p>`;
+                        }, 1500); // Simulate network delay
+
+                    } catch (error) {
+                        console.error('Error fetching advice:', error);
+                        adviceOutput.textContent = 'Sorry, we couldn’t get advice at this time. Please try again later.';
+                    }
+                });
+            }
+
+            // --- Dynamic Stock Cards (optional) ---
+            const stockContainer = document.getElementById('stock-list-container');
+            const stocks = [
+                { name: 'Reliance Industries', symbol: 'RELIANCE.NS' },
+                { name: 'Tata Consultancy Services', symbol: 'TCS.NS' },
+                { name: 'Infosys', symbol: 'INFY.NS' },
+                { name: 'HDFC Bank', symbol: 'HDFCBANK.NS' }
+            ];
+
+            if (stockContainer) {
+                stocks.forEach(stock => {
+                    const card = document.createElement('div');
+                    card.className = 'stock-card';
+                    card.innerHTML = `
+                        <div class="stock-name">${stock.name}</div>
+                        <a href="#" class="btn">Invest Now</a>
+                    `;
+                    stockContainer.appendChild(card);
+                });
+            }
+
+            // --- Modal Functionality ---
+            const manageBillingBtn = document.querySelector('#billing .btn');
+            const billingModal = document.getElementById('billing-modal');
+            const riskFeatureCard = document.querySelector('.feature-card.risk');
+            const riskModal = document.getElementById('risk-modal');
+            const startRiskAnalysisBtn = document.querySelector('#risk-analysis .btn');
+            const updatesFeatureCard = document.querySelector('.feature-card.updates');
+            const updatesModal = document.getElementById('updates-modal');
+            const viewLiveFeedBtn = document.querySelector('#live-updates .btn');
+            const loginBtn = document.querySelector('.login-btn');
+            const loginModal = document.getElementById('login-modal');
+            const createAccountBtn = document.querySelector('.create-account-btn');
+            const createAccountModal = document.getElementById('create-account-modal');
+            const rewardsBtn = document.querySelector('.rewards-btn');
+            const rewardsModal = document.getElementById('rewards-modal');
+            const closeBtns = document.querySelectorAll('.close-btn');
+
+            // Open Modals
+            if (manageBillingBtn) manageBillingBtn.addEventListener('click', () => { billingModal.style.display = 'flex'; populatePaymentHistory(); });
+            if (startRiskAnalysisBtn) startRiskAnalysisBtn.addEventListener('click', () => { riskModal.style.display = 'flex'; });
+            if (viewLiveFeedBtn) viewLiveFeedBtn.addEventListener('click', () => { updatesModal.style.display = 'flex'; });
+            if (loginBtn) loginBtn.addEventListener('click', () => { loginModal.style.display = 'flex'; });
+            if (createAccountBtn) createAccountBtn.addEventListener('click', () => { createAccountModal.style.display = 'flex'; });
+            if (rewardsBtn) rewardsBtn.addEventListener('click', () => { rewardsModal.style.display = 'flex'; updateRewardsTier(); });
+
+            // Close Modals
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.target.closest('.modal').style.display = 'none';
+                });
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
+                }
+            });
+
+            // Feature card link scrolling
+            if (riskFeatureCard) riskFeatureCard.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('risk-analysis').scrollIntoView({ behavior: 'smooth' }); });
+            if (updatesFeatureCard) updatesFeatureCard.addEventListener('click', (e) => { e.preventDefault(); document.getElementById('live-updates').scrollIntoView({ behavior: 'smooth' }); });
+
+
+            // Form submissions (prevent default and provide mock feedback)
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    console.log('Login form submitted!');
+                    setTimeout(() => {
+                        loginModal.style.display = 'none';
+                        // In a real app, handle login success/failure here.
+                        console.log('Login successful!');
+                    }, 500);
+                });
+            }
+
+            const createAccountForm = document.getElementById('create-account-form');
+            if (createAccountForm) {
+                createAccountForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    console.log('Create account form submitted!');
+                    setTimeout(() => {
+                        createAccountModal.style.display = 'none';
+                        // In a real app, handle account creation success/failure here.
+                        console.log('Account created successfully!');
+                    }, 500);
+                });
+            }
+
+            // --- Rewards Tier Logic ---
+            const currentProfitEl = document.getElementById('current-profit');
+            const userTierMsgEl = document.getElementById('user-tier-message');
+            const bronzeTierEl = document.getElementById('bronze-tier');
+            const silverTierEl = document.getElementById('silver-tier');
+            const goldTierEl = document.getElementById('gold-tier');
+            const reinvestBtns = document.querySelectorAll('.reinvest-btn');
+
+            function updateRewardsTier() {
+                // This is a placeholder. In a real app, you'd fetch the user's actual profit from a database.
+                const userProfit = Math.random() * 50; // Generate a random profit between 0 and 50%
+                currentProfitEl.textContent = `${userProfit.toFixed(2)}%`;
+                
+                // Reset active tier styles
+                bronzeTierEl.classList.remove('your-tier');
+                silverTierEl.classList.remove('your-tier');
+                goldTierEl.classList.remove('your-tier');
+                userTierMsgEl.innerHTML = '';
+                
+                if (userProfit >= 40) {
+                    userTierMsgEl.innerHTML = 'Congratulations! You are in the <strong style="color: #FFD700;">Gold Tier</strong>.';
+                    goldTierEl.classList.add('your-tier');
+                } else if (userProfit >= 25) {
+                    userTierMsgEl.innerHTML = 'Great job! You are in the <strong style="color: #C0C0C0;">Silver Tier</strong>.';
+                    silverTierEl.classList.add('your-tier');
+                } else if (userProfit >= 15) {
+                    userTierMsgEl.innerHTML = 'You are on the right track! You are in the <strong style="color: #CD7F32;">Bronze Tier</strong>.';
+                    bronzeTierEl.classList.add('your-tier');
+                } else {
+                    userTierMsgEl.innerHTML = 'Keep going! You are not in a reward tier yet. Make more profit to unlock rewards.';
+                }
+            }
+
+            reinvestBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    console.log('Reinvesting rewards!');
+                    // In a real application, you would handle the reinvestment logic here,
+                    // such as updating the user's portfolio in the database.
+                    alert('Rewards have been successfully reinvested!');
+                });
+            });
+
+            // --- Other Modal-related Functions ---
+            function populatePaymentHistory() {
+                const tableBody = document.getElementById('payment-table-body');
+                if (!tableBody) return;
+                
+                tableBody.innerHTML = '';
+                const payments = [
+                    { date: '2024-01-15', method: 'UPI', amount: '₹5,000', status: 'Success' },
+                    { date: '2024-01-10', method: 'Credit Card', amount: '₹10,000', status: 'Success' },
+                    { date: '2024-01-05', method: 'Net Banking', amount: '₹25,000', status: 'Pending' },
+                ];
+                payments.forEach(payment => {
+                    const row = document.createElement('tr');
+                    const statusClass = payment.status === 'Success' ? 'status-success' : 'status-pending';
+                    row.innerHTML = `
+                        <td>${payment.date}</td>
+                        <td>${payment.method}</td>
+                        <td>${payment.amount}</td>
+                        <td><span class="${statusClass}">${payment.status}</span></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
